@@ -25,8 +25,6 @@ class Like(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
-    image_id = Column(Integer, ForeignKey('image.id'), nullable = False, default = False)
-    image = relationship(Image)
 class Post(Base):
     __tablename__ = "post"
     id = Column(Integer, primary_key = True)
@@ -55,17 +53,8 @@ class Feed(Base):
     __tablename__ = "feed"
     id = Column(Integer, primary_key = True)
 
-    user_id = Column(Integer, ForeignKey('user.id'), nullable = False)
-    user = relationship(User)
-
     post_id = Column(Integer, ForeignKey('post.id'), nullable = False)
     post = relationship(Post)
-
-    image_id = Column(Integer, ForeignKey('image.id'), nullable = False)
-    image = relationship(Image)
-
-    like_id = Column(Integer, ForeignKey('like.id'), nullable = False)
-    like = relationship(Like)
 
 
 ## Draw from SQLAlchemy base
